@@ -45,7 +45,7 @@ The exploratory data analysis examined 4,088 Airbnb listings in Manchester, reve
 
 ### Price Distribution and Market Structure
 The market shows right-skewed pricing with median £81 and mean £106. Distribution analysis revealed concentration in the £50-£120 range where most competition occurs. 
-
+![Price Distribution](images/price_distribution.png)
 
 
 Property and Room Type Analysis 
