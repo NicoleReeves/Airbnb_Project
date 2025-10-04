@@ -27,6 +27,7 @@ git clone https://github.com/NicoleReeves/Airbnb_Project.git
 cd Airbnb_Project
 pip install -r requirements.txt
 streamlit run app.py
+```bash
 
 ## Data Preprocessing & Feature Engineering
 
