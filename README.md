@@ -1,5 +1,10 @@
 # Airbnb Price Project - Manchester
 https://nicolereeves-airbnb-project.streamlit.app/ 
+## Live Demo
+
+![App Demo](images/demo.gif)
+
+
 ## Project Overview
 This project develops an end-to-end machine learning system to predict nightly prices for Airbnb listings in Manchester, UK. Through comprehensive data preprocessing, exploratory analysis, and machine learning modeling, the project creates an interactive web application that provides hosts with data-driven pricing recommendations and strategic insights.
 
