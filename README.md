@@ -239,9 +239,10 @@ streamlit run app.py
 - requirements.txt - Python dependencies
 
 ### Author 
-Name: Nicole Reeves
-GitHub: github.com/NicoleReeves
-Contact: nicole@reeves.co.uk
+##### Name: Nicole Reeves
+##### GitHub: github.com/NicoleReeves
+##### Contact: nicole@reeves.co.uk
+
 
 
 
