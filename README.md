@@ -45,160 +45,162 @@ The exploratory data analysis examined 4,088 Airbnb listings in Manchester, reve
 
 ### Price Distribution and Market Structure
 The market shows right-skewed pricing with median £81 and mean £106. Distribution analysis revealed concentration in the £50-£120 range where most competition occurs. 
+
 ![Price Distribution](images/price_distribution.png)
 
-
-Property and Room Type Analysis 
+### Property and Room Type Analysis 
 “Entire rental unit” dominated with 1,983 listings, followed by "Entire home” (1,660) and “Private room in home” (1,560). Entire properties average £171 versus £56 for private rooms, yet review scores remain consistent across types (4.67 - 4.75). 
 
+![Price Distribution](images/property_type.png)
+![Price Distribution](images/room_type.png)
 
-
-
-Host Analysis 
+### Host Analysis 
 Superhosts represent 30% of listings and respond within an hour at 70% rates. Unexpectedly, Superhosts average slightly lower prices than regular hosts. 
 
+![Price Distribution](images/host.png)
 
-
-Geographical analysis 
+### Geographical analysis 
 Salford District leads with 1,482 listings, but Tameside District averages higher prices (£252 average). Manchester and Salford together account for 65% of the market, creating geographical pricing tiers from city center premiums to suburban value options. 
 
+![Price Distribution](images/georgraphical.png)
 
-
-Capacity and Physical Features analysis 
+### Capacity and Physical Features analysis 
 Two guest properties dominate (2,338 listings), with one bedroom (3,361) and one bathroom (3,680) the most common. Price scales linearly with capacity from £50 (single) to £221 (nine guests), confirming capacity as a primary price determinant. 
 
+![Price Distribution](images/physical features.png)
 
-
-Guest Satisfaction Analysis 
+### Guest Satisfaction Analysis 
 Average rating of 4.68/5.0 demonstrates high market quality. Communication scores are the highest (4.79) while value scores the lowest (4.62). Review dimensions show strong intercorrelation (0.66-0.91), indicating all round satisfaction. Notably, price weakly correlates with rating, providing budget properties can achieve excellence. 
 
+![Price Distribution](images/reviews.png)
 
+![Price Distribution](images/guest_satifaction.png)
 
-
-
-
-Amenities Analysis 
+### Amenities Analysis 
 WiFi (98%), kitchen (92%), and heating (89%) are the most common amenities. Listings average 34.4 amenities with normal distribution. Amenity count shows weak price correlation (0.07), suggesting quality over quantity matters. 
 
+![Price Distribution](images/amenities.png)
 
-
-Text Quality and Presentation Analysis 
+### Text Quality and Presentation Analysis 
 Listing names average 37 characters, description 395 characters. Text intelligence scores normally distribute around 11 points. High text quality properties achieve £11 premium over low quality (£104 vs £92), demonstrating modest but measurable presentation values. 
 
+![Price Distribution](images/text_quality.png)
 
-
-Host experience analysis 
+### Host experience analysis 
 Host average 5.6 years experience with bimodal response rate distribution (spike at 100%). Experience shows no clear price relationship, and Superhost regular host pricing appears similar despite quality designation differences. 
 
+![Price Distribution](images/host_experience.png)
 
-Engineered Pricing Metrics
+### Engineered Pricing Metrics
 Price per person average £37 with high variation. People per bedroom ratio (2.2) indicates reasonable capacity size alignment. Analysis confirms accommodates (0.48), bedrooms (0.46), and beds (0.41) as strongest price correlates, while host metrics and text quality show minimal correlation. 
 
+![Price Distribution](images/engineered_price.png)
 
-
-Feature importance and correlation 
+### Feature importance and correlation 
 Physical capacity metrics dominate price correlation. Host response rate (0.04) and text intelligence (0.06) shows negligible correlation with price but likely influence booking rates and reviews rather than pricing power. 
 
+![Price Distribution](images/feature_importance.png)
 
-Property type pricing variations
+### Property type pricing variations
 “Entire home” averages £140, “Entire rental unit” £106, “Private room in home” £42. Geographical concentration in Manchester and Salford creates distinct competitive submarkets 
 
+![Price Distribution](images/property_type_variations.png)
 
-Market Segmentation 
+### Market Segmentation 
 Budget (<£50): 1,375 listings (27.6%), Mid-Range (£50-£100): 1,935 listings (38.8%), Premium (£100-£200): 1,400 listings (28.1%), Luxury (£200+): 278 listings (5.6%). All segments maintain 4.64-4.71 ratings. Superhost percentage declines from 37.8% (Budget) to 25.2% (Luxury).
 
+![Price Distribution](images/market_segementation.png)
 
-
-Operational Performance 
+### Operational Performance 
 Instant bookable properties average £15 premium (£106 vs £91) but achieve slightly lower ratings (4.63 vs 4.73). Text quality premium reaches £11. Revenue indicator shows right skewed distribution with high performer concentration
 
+![Price Distribution](images/operational_performance.png)
 
-
-Multi-dimensional Relationships
+### Multi-dimensional Relationships
 Complex interaction analysis revealed that amenities distributed across all price rating combinations, bedroom counts create distinct capacity price zones, host experience spans all price ranges with systematic positioning, and superhost occupy similar price availability space as regular hosts. 
 
+![Price Distribution](images/multidimensional_relationships.png)
 
-
-Predictive Feature Summary
+### Predictive Feature Summary
 Final analysis confirmed accommodates (0.48) and bedroom (0.46) as dominant price predictors, followed by beds (0.41) and bathrooms (0.30). Review score and amenity counts show weak correlation, positing them as quality indicators rather than price drivers. 
 
+![Price Distribution](images/predictive_features.png)
 
-
-Strategic Quadrants 
+### Strategic Quadrants 
 Market is divided into Premium (25.1% - high price, high rating), Value (24% - low price, high rating), Budget (26.8% - low price, low rating) and Needs Improvement (24% - high price, low rating). Balanced distribution suggest no extreme concentration, with opportunities across all quadrants. 
 
+![Price Distribution](images/strategic_quadrants.png)
 
-
-Key Insights 
+### Key Insights 
 The EDA established that successful price prediction prioritises physical capacity features as primary predictors. Quality metrics like reviews serve better as booking likelihood indicators than price predictors. Host characteristics show minimal direct price impact despite influencing long term success. Geographical location creates distinct submarkets requiring location based features. Amenities matter but show diminishing return, suggesting binary presence indicators for key amenities may outperform count-based approaches. Text quality offers incremental pricing improvements. The market supports diverse strategies across price tiers, each capable of achieving guest satisfaction when properly aligned with target expectation. 
 
-Machine Learning Modelling 
+## Machine Learning Modelling 
 Multiple regression models were developed to predict Manchester Airbnb prices. An optimized XGBoost model achieved 98.33% validation R² (£11.12 RMSE) but suffered from data leakage. After removing the problematic price per person feature, the deployment model achieved a legitimate 49.10% test R² (£58.21 RMSE), with property capacity features (accommodates, bedrooms, beds) as primary predictors.
 
-Data Preparation 
+### Data Preparation 
 Starting with 4,988 listings and 216 features, correlation filtering removed 16 highly intercorrelated features, reducing to 142 predictors. Initial Random Forest analysis revealed price per person dominated with 58.7% feature importance, signaling data leakage single it’s derived from the target variable. Data split 60% training (3,192), 20% validation (789), 20% test (998). RobustScaler applied to linear models with tree based models using the unscaled features. 
 
+![Price Distribution](images/data_preparation.png)
 
-
-Baseline Models 
+### Baseline Models 
 Linear Models achieved moderate performance: Linear Regression (57.35% val R², £56.24 RMSE), Ridge (57.39%, £56.21), Lasso (56.15%, £57.02). Tree-based models substantially outperformed: Decision Tree (97.48%, £13.68), Random Forest (97.88%, £12.54). The 40 percentage point gap demonstrated tree models' superior ability to capture non-linear relationships. 
 
+![Price Distribution](images/baseline_models.png)
 
-
-Advanced Models 
+### Advanced Models 
 Gradient boosting methods excelled: XGBoost (96.97% val R², £14.99 RMSE), LightGBM (97.81%, £12.75), Gradient Boosting (98.77%, £9.55—best single model), Extra Trees (97.62%, £13.28). The ensemble combining Gradient Boosting, Random Forest, and LightGBM achieved 98.37% R² (£11.01 RMSE) but didn't surpass Gradient Boosting alone.
 
+![Price Distribution](images/advanced_models.png)
 
-
-Cross Validation and Tuning 
+### Cross Validation and Tuning 
 Five fold CV revealed consistent performance XGBoost (96.12% mean R² ±0.96%, £17.36 RMSE ±£2.49), Random Forest (95.22% ±2.15%, £19.10 ±£4.56), LightGBM (94.66% ±0.61%, £20.63 ±£2.65). Randomised hyperparameter search over 15 XGBoost configurations identified optimal settings: n_estimators=200, max_depth=3, learning_rate=0.2, subsample=1.0, colsample_bytree=1.0. Tuned XGBoost achieved 98.33% validation R² (£11.12 RMSE), improving 1.36 percentage points over defaults.
 
 Random Forest tuning (10 configurations) found: n_estimators=300, max_depth=None, min_samples_split=10, min_samples_leaf=2, max_features=None, achieving 97.50% validation R² (£13.62 RMSE). XGBoost selected as final model based on superior validation performance.
 
-Feature Importance Analysis
+### Feature Importance Analysis
 XGBoost feature importance: price per person (28.01%), accommodates (22.12%), bedrooms (10.15%), room_type_Private room (9.70%), name_view_score (6.49%), beds (5.02%), has_washer (3.35%), desc_location_themes_score (2.26%).
 
-
+![Price Distribution](images/feature_importance_analysis.png)
 
 Permutation importance revealed even stronger concentration: price per person (1.829), accommodates (1.010), bedrooms (0.022), people_per_bedroom (0.016), beds (0.004), has_washer (0.002). Massive drop after top two features confirmed their dominant predictive power.
 
+![Price Distribution](images/permutation_importance.png)
 
-
-Deployment Model Preparation 
+### Deployment Model Preparation 
 Removing price per person eliminates data leakage. Retrained XGBoost achieved 49.10% test R² (£58.21 RMSE), representing legitimate predictive power. The 49-percentage-point drop (98.33% to 49.10%) quantified leakage impact. Deployment performance of 49.10% R² with £58 typical error (60% of median price) provides useful pricing guidance despite inherent market uncertainty. Model saved with scaler, feature list, and default values for production deployment.
 
-Key Insights
+### Key Insights
 Gradient boosting outperformed linear models by 20-40 percentage points R². Extensive feature engineering provided modest returns with text features appearing in the top 20 but contributed minimally compared to core characteristics. Hyperparameter tuning added 1.36 percentage points but required substantial computation. The final 49.10% R² represents solid real-world performance, acknowledging that unmeasured factors create inherent prediction limits.
 
-Streamlit Application - Interactive Price Prediction Interface 
+## Streamlit Application - Interactive Price Prediction Interface 
 The Streamlit application provides a web-based interface where Manchester Airbnb hosts input property details to receive instant price predictions with actionable recommendations. The application integrates the complete preprocessing pipeline and trained XGBoost model into a form that delivers personalised pricing guidance.
 
-Technical Architecture
+### Technical Architecture
 The application uses modular design separating UI from the processing logic and four artifact loads via joblib caching. The preprocessing module contains 13 amenity dictionaries (89 amenities), text analysis functions for NLP features, URL parsing for image quality, and the full pipeline transforming inputs into 214 features.
 
-User Interface
+### User Interface
 The two column layout maximises space while grouping all the related information together. The interface prompts the user to enter all the information regarding their Airbnb such as basic property info (name, description, URL), property details (type, capacity, rooms), location (33 neighborhoods with auto-populated coordinates), and host info (account age, response time, verification) as well as amenities via organized checkboxes (Essentials, Comfort, Premium, Safety) plus review sliders for seven dimensions.
 
 Custom CSS matches Airbnb branding with coral red buttons , rounded corners, and appropriate spacing. Centered header with emoji and descriptive text immediately communicates purpose.
 
-Results Presentation 
+### Results Presentation 
 After scaling and prediction, results display with prominent recommended prices, three metric cards (monthly estimate at 25 nights, per-person rate, ±15% confidence range), and feature impact analysis. Positive factors (hot tub +£22, City Centre +£18, excellent reviews +£8) appear left with checkmarks; negative factors (few reviews -£8, slow response -£6) appear right with warnings.
 
 Competitive positioning compares predicted price to neighborhood benchmarks via Plotly bar chart, with interpretive text explaining market position (significantly below/above, competitive, premium). Three pricing strategies (Conservative -10%, Balanced, Aggressive +15%) show expected occupancy and use cases, with revenue projections table quantifying financial implications.
 
-Technical Implementations 
+### Technical Implementations 
 Comprehensive error handling wraps predictions in try-except blocks with expandable stack traces. Spinner indicates processing during 1-2 second feature extraction. Requirements include Streamlit 1.28.0, Pandas 2.1.0, NumPy 1.24.3, Scikit-learn 1.3.0, XGBoost 2.0.0, Joblib 1.3.2, and Plotly. Application runs with streamlit run app.py and deploys to cloud platforms within free tier limits.
 
-Strengths and Limitations 
+### Strengths and Limitations 
 The application successfully democratizes ML prediction through intuitive interface, replicates 214-feature preprocessing ensuring quality, and provides actionable insights beyond raw predictions. However, it inherits 49.10% R² model limitation, cannot capture seasonal dynamics or special events, uses approximated rather than rigorous confidence intervals, requires periodic market data updates, and employs rules-based impacts rather than SHAP values. Revenue projections assume static occupancy that varies in reality.
 
-Conclusion 
+## Conclusion 
 This end to end data science project developed a machine learning system for predicting Manchester Airbnb prices. From 7,151 raw listings, preprocessing produced 4,988 clean records with 216 engineered features. An optimized XGBoost model achieved 49.10% test R² (£58.21 RMSE) after correcting data leakage, with property capacity (accommodates, bedrooms, bathrooms) as primary predictors. A Streamlit application delivers predictions with competitive analysis and strategic recommendations.
 
-Key Achievements 
+### Key Achievements 
 The project demonstrates full-pipeline data science capabilities: advanced preprocessing with 89 amenity features and NLP text analysis, exploratory analysis through 19 visualizations identifying capacity-price relationships and geographic segmentation, systematic machine learning experimentation across 9 models with hyperparameter tuning and rigorous evaluation, and practical deployment through an interactive web application providing actionable business intelligence.
 
-Future Enhancements
+### Future Enhancements
 Potential improvements include temporal features for seasonality, ensemble stacking for additional signal, SHAP values for theoretically grounded explanations, dynamic market data integration, and A/B testing with actual hosts to validate business impact.
 
 ## Installation and Usage
@@ -210,13 +212,13 @@ pip install -r requirements.txt
 Running the Application 
 streamlit run app.py
 
-Project Files 
+### Project Files 
 app.py - Streamlit web application
 preprocessing.py - Feature engineering pipeline
 *.pkl files - Trained model and preprocessing artifacts
 requirements.txt - Python dependencies
 
-Author 
+### Author 
 Name: Nicole Reeves
 GitHub: github.com/NicoleReeves
 Contact: nicole@reeves.co.uk
