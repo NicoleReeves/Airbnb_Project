@@ -27,7 +27,7 @@ git clone https://github.com/NicoleReeves/Airbnb_Project.git
 cd Airbnb_Project
 pip install -r requirements.txt
 streamlit run app.py
-```bash
+```
 
 ## Data Preprocessing & Feature Engineering
 
@@ -227,17 +227,18 @@ Potential improvements include temporal features for seasonality, ensemble stack
 ### Requirements
 ```bash
 pip install -r requirements.txt
-
+```
 Running the Application 
+```bash
 streamlit run app.py
-
-Project Files 
+```
+### Project Files 
 app.py - Streamlit web application
 preprocessing.py - Feature engineering pipeline
 *.pkl files - Trained model and preprocessing artifacts
 requirements.txt - Python dependencies
 
-Author 
+### Author 
 Name: Nicole Reeves
 GitHub: github.com/NicoleReeves
 Contact: nicole@reeves.co.uk
