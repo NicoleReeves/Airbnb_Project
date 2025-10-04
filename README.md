@@ -1,5 +1,10 @@
 # Airbnb Price Project - Manchester
-https://nicolereeves-airbnb-project.streamlit.app/ 
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nicolereeves-airbnb-project.streamlit.app/ )
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+
+> End-to-end machine learning system predicting nightly Airbnb prices with 49.10% R² accuracy
+
 ## Live Demo
 
 ![App Demo](images/demo.gif)
@@ -12,6 +17,16 @@ Dataset: 7,151 Airbnb listings from Manchester with 79 original features
 Final Model: XGBoost achieving 49.10% R² (£58.21 RMSE)
 Deployment: Interactive Streamlit web application with real-time predictions
 
+## Quick Start
+
+Try the live app: **[Airbnb Price Predictor](https://nicolereeves-airbnb-project.streamlit.app/)**
+
+Or run locally:
+```bash
+git clone https://github.com/NicoleReeves/Airbnb_Project.git
+cd Airbnb_Project
+pip install -r requirements.txt
+streamlit run app.py
 
 ## Data Preprocessing & Feature Engineering
 
