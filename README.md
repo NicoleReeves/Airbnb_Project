@@ -1,6 +1,6 @@
-#Airbnb Price Project - Manchester
+# Airbnb Price Project - Manchester
 
-##Project Overview
+## Project Overview
 This project develops an end-to-end machine learning system to predict nightly prices for Airbnb listings in Manchester, UK. Through comprehensive data preprocessing, exploratory analysis, and machine learning modeling, the project creates an interactive web application that provides hosts with data-driven pricing recommendations and strategic insights.
 
 Key Technologies: Python, Pandas, Scikit-learn, XGBoost, Streamlit, NLP
@@ -9,19 +9,19 @@ Final Model: XGBoost achieving 49.10% R² (£58.21 RMSE)
 Deployment: Interactive Streamlit web application with real-time predictions
 
 
-##Data Preprocessing & Feature Engineering
+## Data Preprocessing & Feature Engineering
 
-###Data Overview
+### Data Overview
 The preprocessing begins with an Airbnb listings dataset containing 7,151 initial records. After careful selection and cleaning, I focused on 26 columns from the original datasets, prioritising features related to property characteristics, amenities, reviews, and host information. The final process dataset contains 5,430 listings with 207 engineered features in a modelling ready format. 
 
-###Data Cleaning 
+### Data Cleaning 
 The data cleaning process started by analysing missing values across the columns. I identified columns with varying levels of missingness, particularly some in the 10-50% range. I implemented imputation strategies based on the feature. For numeric features like bathroom, bedrooms and beds, I used median imputation to maintain the central tendency of the distribution. Categorical features such as host response time were filled with an ‘unknown’ category to preserve information. Boolean features including superhost status and identity verification were filled with False for missing values, assuming the absence of a value indicated negative status. Ultimately, I dropped 856 listings that were missing the target variable of price as they could not be used in machine learning. 
 
 For data type standardisation the price column required extensive cleaning to remove currency symbols and commas. The boolean columns were cleaned to ‘t’ and ‘f’ representation. Date columns like host since and last scraped were converted to datetime format for feature engineering. 
 
 Outlier treatment was applied systematically across key numerical features using the Interquartile range method. For the price variable specifically, I clipped values to the 0.5th and 99.5th percentile which resulted in prices between £20 and £1,163.89, with 51 extreme outliers being clipped. The same method was applied to accommodates, bedrooms, beds, bathrooms and number of reviews to ensure that extreme values wouldn't affect the modelling process. 
 
-###Advanced Feature engineering
+### Advanced Feature engineering
 The feature engineering process transformed the original 26 columns into 207. I created three features to capture the host’s experience including how many days and year they have been active calculated from the accounts creation date and I also calculated how many days since the last review to measure recency. I then engineered two price related features - price per person and people per bedroom to provide a normalised pricing metric. 
 
 From the picture url field, I created eight features including URL, length, complexity scores, Mustache domain verification and estimated image quality levels ranging from original to standard. This analysis also included file format extraction and the creation of a quality scoring system that considers multiple URL characteristics. 
@@ -34,16 +34,16 @@ The description text analysis created 24 features through natural language proce
 
 Overall, I created three composite metrics. The overall text quality combines name features at 25% weight, description features at 50%, and amenities features at 25% weight into a single quality indicator. This score is then converted into a percentage and further categorised into six levels - basic, average, good, high, premium and exceptional. 
 
-###Encoding Strategies
+### Encoding Strategies
 For the ordinal variable, I applied ordinal encoding the host response time to create an ordered scale to preserve the natural ordering. One-hot encoding was applied to several categorical variables - room type, property type, estimated image quality and text quality. To handle high cardinality categorical variables, I implemented a grouping strategy for property type, which originally contained 56 unique values. To prevent sparseness I selected the 15 top most common property types and grouped the remainder into an Other category. 
 
-###Data Reduction and Final Dataset
+### Data Reduction and Final Dataset
 To focus the dataset on predictive features, I removed several columns like IDs and dates as the relevant features have been extracted from them. Text fields were also removed once feature engineering had extracted the important information. Availability metrics were excluded as they are not directly relevant for pricing prediction. Redundant listing counts and other duplicates were also removed to ensure the machine learning model is as efficient as possible. The cleaned dataset has 207 features across different data types with 5439 records with no missing values ready for machine learning. 
 
-##Exploratory Data Analysis 
+## Exploratory Data Analysis 
 The exploratory data analysis examined 4,088 Airbnb listings in Manchester, revealing a market with a median price of £80 per night and a strong guest satisfaction of 4.69/5. The analysis identifies property capacity as the primary price driver, while surprisingly finding that quality metrics like review scores and host characteristics show minimal correlation with pricing. After outlier treatment, prices range from £20 to £1,164 with the interquartile range spanning £40 to £120. 
 
-###Price Distribution and Market Structure
+### Price Distribution and Market Structure
 The market shows right-skewed pricing with median £81 and mean £106. Distribution analysis revealed concentration in the £50-£120 range where most competition occurs. 
 
 
