@@ -73,8 +73,7 @@ Two guest properties dominate (2,338 listings), with one bedroom (3,361) and one
 Average rating of 4.68/5.0 demonstrates high market quality. Communication scores are the highest (4.79) while value scores the lowest (4.62). Review dimensions show strong intercorrelation (0.66-0.91), indicating all round satisfaction. Notably, price weakly correlates with rating, providing budget properties can achieve excellence. 
 
 ![Price Distribution](images/reviews.png)
-
-![Price Distribution](images/guest_satifaction.png)
+![Price Distribution](images/guest_satifcation.png)
 
 ### Amenities Analysis 
 WiFi (98%), kitchen (92%), and heating (89%) are the most common amenities. Listings average 34.4 amenities with normal distribution. Amenity count shows weak price correlation (0.07), suggesting quality over quantity matters. 
@@ -212,13 +211,13 @@ pip install -r requirements.txt
 Running the Application 
 streamlit run app.py
 
-### Project Files 
+Project Files 
 app.py - Streamlit web application
 preprocessing.py - Feature engineering pipeline
 *.pkl files - Trained model and preprocessing artifacts
 requirements.txt - Python dependencies
 
-### Author 
+Author 
 Name: Nicole Reeves
 GitHub: github.com/NicoleReeves
 Contact: nicole@reeves.co.uk
