@@ -233,10 +233,10 @@ Running the Application
 streamlit run app.py
 ```
 ### Project Files 
-app.py - Streamlit web application
-preprocessing.py - Feature engineering pipeline
-*.pkl files - Trained model and preprocessing artifacts
-requirements.txt - Python dependencies
+- app.py - Streamlit web application
+- preprocessing.py - Feature engineering pipeline
+- *.pkl files - Trained model and preprocessing artifacts
+- requirements.txt - Python dependencies
 
 ### Author 
 Name: Nicole Reeves
